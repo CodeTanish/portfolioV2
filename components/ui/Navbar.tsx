@@ -23,7 +23,7 @@ const Navbar = () => {
         <ul className="mr-4 md:mr-14 flex flex-row space-x-2 sm:space-x-4">
           <li className="text-sm sm:text-base md:text-xl">
             <Link href="/">Home</Link>
-          </li>
+          </li> 
           <li className="text-sm sm:text-base md:text-xl hover:bg-gradient-to-r from-pink-400 from-33% via-pink-600 via-33% to-red-500 to-34% hover:bg-clip-text hover:text-transparent group-hovhover:bg-clip-text hover:text-transparenter:transition-all transition-all duration-500 ease-out bg-clip-text ">
             <Link href="/about">
               About 
