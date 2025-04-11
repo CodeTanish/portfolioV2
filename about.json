@@ -1,0 +1,27 @@
+[
+    {
+      "icon": "GraduationCap",
+      "title": "Education",
+      "items": [
+        { "label": "School", "value": "K.C.M Public School, Moradabad (Class of 2020)" },
+        { "label": "Diploma", "value": "Govt. Polytechnic, Rampur (Class of 2023)" },
+        { "label": "B-Tech", "value": "JSS Academy of Technical Education, Noida (Class of 2026)" }
+      ]
+    },
+    {
+      "icon": "Briefcase",
+      "title": "Certifications",
+      "items": [
+        { "label": "Industrial Training", "value": "Turbo Generator Basics - B.H.E.L, Haridwar" },
+        { "label": "Introduction to Java (Solo Learn)", "value": "Basic to Advanced + OOP in java" }
+      ]
+    },
+    {
+      "icon": "Star",
+      "title": "Hobbies",
+      "items": [
+        { "label": "Activities", "value": "Coding, Video Games, Music, Anime" }
+      ]
+    }
+  ]
+  

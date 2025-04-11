@@ -1,0 +1,69 @@
+{
+    "web development": [
+      {
+        "image": "images/Html.png",
+        "title": "HTML",
+        "description": "Markup language for creating web pages.",
+        "progress": 70
+      },
+      {
+        "image": "/images/css.png",
+        "title": "CSS",
+        "description": "Stylesheet language for designing websites.",
+        "progress": 60
+      },
+      {
+        "image": "/images/js.png",
+        "title": "JavaScript",
+        "description": "Programming language for the web.",
+        "progress": 60
+      },
+      {
+        "image": "/images/react.png",
+        "title": "React",
+        "description": "Library for building interactive UIs.",
+        "progress": 70
+      },
+      {
+        "image": "/images/nodejs.png",
+        "title": "Node.js",
+        "description": "JavaScript runtime for the backend.",
+        "progress": 70
+      },
+      {
+        "image": "/images/Express-js.png",
+        "title": "Express",
+        "description": "Backend framework for Node.js.",
+        "progress": 70
+      },
+      {
+        "image": "/images/mongo.png",
+        "title": "MongoDB",
+        "description": "NoSQL database for modern apps.",
+        "progress": 55
+      },
+      {
+        "image": "/images/Nextjs.png",
+        "title": "Next.js",
+        "description": "Nextjs is a React framework for server-side rendering",
+        "progress": 50
+      }
+    ],
+    "Cross Platform": [
+      {
+        "image": "/images/react.png",
+        "title": "React Native",
+        "description": "Good knowledge of React Native for mobile app development.",
+        "progress": 70
+      }
+    ],
+    "Coding": [
+      {
+        "image": "/images/java.png",
+        "title": "Problem Solving",
+        "description": "Having a good knowledge about Data Structures and Algorithms",
+        "progress": 75
+      }
+    ]
+  }
+  

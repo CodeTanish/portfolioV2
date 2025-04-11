@@ -1,60 +1,72 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react';
-import HoverCard from '@/components/ui/Card';
-import { div } from 'framer-motion/client';
+import React from 'react';
+import { motion } from 'framer-motion';
+import rawAboutSections from '@/about.json';
+import { Briefcase, GraduationCap, Star } from 'lucide-react';
+
+const iconMap = {
+  GraduationCap: <GraduationCap className="w-8 h-8 text-indigo-500" />,
+  Briefcase: <Briefcase className="w-8 h-8 text-green-500" />,
+  Star: <Star className="w-8 h-8 text-yellow-500" />,
+};
+
+type AboutItem = {
+  label: string;
+  value: string;
+};
+
+type AboutSection = {
+  icon: keyof typeof iconMap;
+  title: string;
+  items: AboutItem[];
+};
+
+const aboutSections = rawAboutSections as AboutSection[];
 
 const AboutPage: React.FC = () => {
-  
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center dark:text-white text-black">
-      <div className="h-[80vh] w-full rounded-3xl p-6 max-w-4xl animate-fadeIn">
-        <h1 className="text-4xl font-bold mb-4 text-center">About Me</h1>
-        <p className="text-lg mb-4 text-center">
-          Hello! I'm Tanish Rastogi, and this is a brief overview of my life achievements.
+    <div className="min-h-screen flex flex-col items-center justify-center text-gray-900 dark:text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-full max-w-5xl"
+      >
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center text-black dark:text-white">
+          About Me
+        </h1>
+        <p className="text-lg md:text-xl mb-12 text-center max-w-2xl mx-auto">
+          Hi, I'm Tanish Rastogi — here’s a concise look at my academic journey, certifications, and personal interests.
         </p>
-        <div className="space-y-4 flex flex-col flex-wrap items-center justify-center mt-20">
-          <HoverCard
-            title="Education"
-            content={
-                <div className='flex flex-col justify-around text-start'>
-                    <h3 className='text-xl text-center font-mono my-2'>School</h3>
-                    <p>K.C.M public School, Moradabad</p>
-                    <p>Class of 2020</p>
-                    <h3 className='text-xl text-center font-mono my-2'>Diploma College</h3>
-                    <p>Govt. PolyTechnic, Rampur</p>
-                    <p>class of 2023</p>
-                    <h3 className='text-xl text-center font-mono my-2'>B-Tech College</h3>
-                    <p>Jss Academy of Technical Education, Noida</p>
-                    <p>Class of 2026</p>
 
-                </div>
-            }
-          />
-          <HoverCard
-            title="Certification"
-            content={
-              <div className='flex flex-col justify-around text-start'>
-              <h3 className='text-xl text-center font-mono my-2'>Industrial Training</h3>
-              <p>Basic knowledge of Trubo Generator</p>
-              <p>B.H.E.L, Haridwar</p>
-              <h3 className='text-xl text-center font-mono my-2'>Coding Certificate</h3>
-              <p>Java basic to advance</p>
-              <p>Solo Learn</p>
-              <p>Object Orientation Programming in java</p>
-              <p>Solo Learn</p>
-
-
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {aboutSections.map((section, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.03 }}
+              className="rounded-2xl bg-white dark:bg-gray-900 p-6 shadow-md border border-gray-200 dark:border-gray-700 transition-all"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                {iconMap[section.icon]}
+                <h3 className="text-xl font-semibold">{section.title}</h3>
               </div>
-            }
-          />
-          <HoverCard
-            title="Hobbies"
-            content="Coding, Playing Video Games, Travelling."
-          />
+              <ul className="space-y-2 text-sm">
+                {section.items.map((item, idx) => (
+                  <li key={idx}>
+                    <span className="font-medium text-gray-700 dark:text-gray-300">
+                      {item.label}: 
+                    </span>
+                    <span className="ml-1 text-gray-600 dark:text-gray-400">
+                      {item.value}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
