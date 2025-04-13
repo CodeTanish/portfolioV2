@@ -6,28 +6,11 @@ if (!mongodb_uri) {
   throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
 }
 
-// Extend the global object to include a `mongoose` cache
-declare global {
-  var mongoose: {
-    conn: mongoose.Mongoose | null;
-    promise: Promise<mongoose.Mongoose> | null;
-  } | undefined;
+const cached: { conn: mongoose.Mongoose | null; promise: Promise<mongoose.Mongoose> | null } = global.mongoose || { conn: null, promise: null };
+
+if (typeof global !== 'undefined') {
+  global.mongoose = cached;
 }
-
-// Use a properly typed cache
-const globalWithMongoose = global as typeof globalThis & {
-  mongoose?: {
-    conn: mongoose.Mongoose | null;
-    promise: Promise<mongoose.Mongoose> | null;
-  };
-};
-
-const cached = globalWithMongoose.mongoose ?? {
-  conn: null,
-  promise: null,
-};
-
-globalWithMongoose.mongoose = cached;
 
 export async function connectToDB() {
   if (cached.conn) return cached.conn;

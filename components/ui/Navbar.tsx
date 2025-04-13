@@ -20,6 +20,7 @@ const Navbar = () => {
           <Image
             src="/images/Profile.jpg"
             alt="Profile Picture"
+            loading="eager"
             width={30}
             height={30}
             className="border border-none rounded-full"
