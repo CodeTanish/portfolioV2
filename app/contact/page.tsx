@@ -3,6 +3,14 @@ import React, { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Github, Instagram } from 'lucide-react'
 
+// 👇 Dynamically resolve the base URL
+const getBaseUrl = () => {
+  if (typeof window !== 'undefined') {
+    return window.location.origin
+  }
+  return process.env.NEXT_PUBLIC_SITE_URL
+}
+
 const ContactPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -15,7 +23,7 @@ const ContactPage = () => {
     const message = formData.get('message') as string
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(`${getBaseUrl()}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,7 +31,12 @@ const ContactPage = () => {
         body: JSON.stringify({ name, email, message }),
       })
 
-      const data = await res.json()
+      let data
+      try {
+        data = await res.json()
+      } catch (err) {
+        throw new Error('Invalid JSON response from server')
+      }
 
       if (res.ok) {
         alert(data.message)
@@ -33,7 +46,7 @@ const ContactPage = () => {
       }
     } catch (error) {
       console.error(error)
-      alert('Something went wrong.')
+      alert('Something went wrong. Check console for details.')
     }
   }
 
