@@ -3,14 +3,6 @@ import React, { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Github, Instagram } from 'lucide-react'
 
-// 👇 Dynamically resolve the base URL
-const getBaseUrl = () => {
-  if (typeof window !== 'undefined') {
-    return window.location.origin
-  }
-  return process.env.NEXT_PUBLIC_SITE_URL
-}
-
 const ContactPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -23,7 +15,7 @@ const ContactPage = () => {
     const message = formData.get('message') as string
 
     try {
-      const res = await fetch(`${getBaseUrl()}/api/contact`, {
+      const res = await fetch(/api/contact, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,11 +34,11 @@ const ContactPage = () => {
         alert(data.message)
         form.reset()
       } else {
-        alert(data.error || 'Something went wrong.')
+        alert(data.error)
       }
     } catch (error) {
+      alert(error)
       console.error(error)
-      alert('Something went wrong. Check console for details.')
     }
   }
 
