@@ -37,8 +37,9 @@ const AboutPage: React.FC = () => {
           About Me
         </h1>
         <p className="text-lg md:text-xl mb-12 text-center max-w-2xl mx-auto">
-          Hi, I'm Tanish Rastogi — here’s a concise look at my academic journey, certifications, and personal interests.
-        </p>
+  Hi, I&#39;m Tanish Rastogi — here’s a concise look at my academic journey, certifications, and personal interests.
+</p>
+
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {aboutSections.map((section, index) => (

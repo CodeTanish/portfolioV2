@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import skillsData from '@/data.json'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
 interface SkillItem {
   image: string;
@@ -53,9 +54,10 @@ const DetailCard: React.FC<DetailCardProps> = ({ title, onBack, skills }) => (
         >
           <div
             className="w-16 h-16 mb-4 rounded-full">
-            <img
+            <Image
               src={skill.image}
               alt={skill.title}
+              fill
               className="w-full h-full object-cover"
             />
           </div>
