@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Mail, Github, Instagram } from 'lucide-react'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
@@ -33,7 +33,7 @@ const ContactPage = () => {
     } catch (err) {
       console.error(err)
       toast.error('Something went wrong.')
-    }
+    } 
   }
 
   return (
@@ -119,4 +119,4 @@ const ContactPage = () => {
   )
 }
 
-export default ContactPage
+export default ContactPage 
