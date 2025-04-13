@@ -17,41 +17,23 @@ const ContactPage = () => {
     const message = formData.get('message')
 
     try {
-      const res = await fetch(/api/contact, {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message }),
       })
 
-<<<<<<< HEAD
       const data = await res.json()
-=======
-      let data
-      try {
-        data = await res.json()
-      } catch (err) {
-        throw new Error('Invalid JSON response from server')
-      }
-
->>>>>>> 20c88e3af57eb6350ffe635e623b39ea12bdc595
       if (res.ok) {
         toast.success(data.message)
         form.reset()
       } else {
-<<<<<<< HEAD
         toast.error(data.error)
       }
     } catch (err) {
       console.error(err)
       toast.error('Something went wrong.')
-=======
-        alert(data.error)
-      }
-    } catch (error) {
-      alert(error)
-      console.error(error)
->>>>>>> 20c88e3af57eb6350ffe635e623b39ea12bdc595
-    }
+    } 
   }
 
   return (

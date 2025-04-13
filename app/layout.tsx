@@ -19,7 +19,7 @@ export default function RootLayout({
       <body
       >
         <Navbar/>
-        <ToasterProvider/>
+        <ToasterProvider />
         {children}
         <Footer/>
       </body>
