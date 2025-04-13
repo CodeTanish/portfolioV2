@@ -1,39 +1,38 @@
 'use client'
-import React, { FormEvent } from 'react'
-import { motion } from 'framer-motion'
+import React from 'react'
 import { Mail, Github, Instagram } from 'lucide-react'
+import { motion } from 'framer-motion'
+import toast from 'react-hot-toast'
 
 const ContactPage = () => {
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     const form = e.currentTarget
     const formData = new FormData(form)
 
-    const name = formData.get('name') as string
-    const email = formData.get('email') as string
-    const message = formData.get('message') as string
+    const name = formData.get('name')
+    const email = formData.get('email')
+    const message = formData.get('message')
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message }),
       })
 
       const data = await res.json()
-
       if (res.ok) {
-        alert(data.message)
+        toast.success(data.message)
         form.reset()
       } else {
-        alert(data.error || 'Something went wrong.')
+        toast.error(data.error)
       }
-    } catch (error) {
-      console.error(error)
-      alert('Something went wrong.')
+    } catch (err) {
+      console.error(err)
+      toast.error('Something went wrong.')
     }
   }
 
