@@ -1,10 +1,10 @@
 {
     "web development": [
       {
-        "image": "images/Html.png",
-        "title": "HTML",
-        "description": "Markup language for creating web pages.",
-        "progress": 70
+        "image": "/images/Html5.png",
+        "title": "Html",
+        "description": "Markup language for creating website",
+        "progress": 50
       },
       {
         "image": "/images/css.png",
@@ -43,11 +43,12 @@
         "progress": 55
       },
       {
-        "image": "/images/Nextjs.png",
+        "image": "/images/nextjs.png",
         "title": "Next.js",
         "description": "Nextjs is a React framework for server-side rendering",
         "progress": 50
       }
+
     ],
     "Cross Platform": [
       {
