@@ -1,23 +1,26 @@
-'use client'
-import React from 'react'
-import { Mail, Github, Instagram } from 'lucide-react'
-import { motion } from 'framer-motion'
-import toast from 'react-hot-toast'
+"use client";
+import React from "react";
+import { Mail, Github, Instagram } from "lucide-react";
+import { motion } from "framer-motion";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const ContactPage = () => {
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const form = e.currentTarget
-    const formData = new FormData(form)
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
-    const name = formData.get('name')
-    const email = formData.get('email')
-    const message = formData.get('message')
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message");
+
+    const Backend_Url = process.env.BACKEND_URL
 
     try {
-      const res = await fetch('/api/contact', {
+      /**
+       * const res = await fetch('https://your-backend-api.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message }),
@@ -33,8 +36,26 @@ const ContactPage = () => {
     } catch (err) {
       console.error(err)
       toast.error('Something went wrong.')
-    } 
-  }
+    }s
+       */
+
+      const res = await axios.post(`${Backend_Url}/api/service`, {
+        name,
+        email,
+        message,
+      });
+      
+      if (res.status === 200) {
+        toast.success(res.data.message);
+        form.reset();
+      } else {
+        toast.error(res.data.error || "An error occurred");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong.");
+    }
+  };
 
   return (
     <div className="text-black min-h-screen flex flex-col justify-between dark:text-white">
@@ -116,7 +137,7 @@ const ContactPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ContactPage
+export default ContactPage;
