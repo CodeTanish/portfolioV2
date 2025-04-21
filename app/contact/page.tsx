@@ -16,7 +16,6 @@ const ContactPage = () => {
     const email = formData.get("email");
     const message = formData.get("message");
 
-    const Backend_Url = process.env.BACKEND_URL
 
     try {
       /**
@@ -39,7 +38,9 @@ const ContactPage = () => {
     }s
        */
 
-      const res = await axios.post(`${Backend_Url}/api/service`, {
+      const Backend_URL = process.env.Backend_Url
+      
+      const res = await axios.post(`${Backend_URL}/api/service`, {
         name,
         email,
         message,
