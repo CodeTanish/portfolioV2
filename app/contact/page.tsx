@@ -38,8 +38,8 @@ const ContactPage = () => {
     }s
        */
 
-      const Backend_URL = process.env.Backend_Url
-      
+      const Backend_URL = process.env.NEXT_PUBLIC_BACKEND_URL
+
       const res = await axios.post(`${Backend_URL}/api/service`, {
         name,
         email,
